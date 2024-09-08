@@ -21,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
         // float verticalInput = Input.GetAxis("Vertical");
 
         //rb2d.velocity = new Vector2(horizontalInput * speed, 0);
-        rb2d.MovePosition((Vector2)transform.position + (horizontalInput * speed * Time.deltaTime * new Vector2(1,0)));
-        //transform.Translate(direction * speed * Time.deltaTime);
+        //rb2d.MovePosition((Vector2)transform.position + (horizontalInput * speed * Time.deltaTime * new Vector2(1,0)));
+        
+        transform.Translate(horizontalInput * new Vector2(1,0) * speed * Time.deltaTime);
     }
 }
