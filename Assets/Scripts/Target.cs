@@ -14,7 +14,6 @@ public class Target : MonoBehaviour
     // Start is called before the first frame update
     public void Update()
     {
-        Shot();
         once = true;
         
     }
@@ -23,14 +22,12 @@ public class Target : MonoBehaviour
         Vector3 CurrentVelocity = rg2d.velocity;
 
         Debug.Log("I was shot");
-        if (CurrentVelocity.y > 0 && once){
-            var emission = collisionParticles.emission;
-            var dur = collisionParticles.main.duration;
+        var emission = collisionParticles.emission;
+        var dur = collisionParticles.main.duration;
 
-            emission.enabled = true;
-            collisionParticles.Play();
-            once = false;      
-        }
+        emission.enabled = true;
+        collisionParticles.Play();
+        once = false;      
     }
     private bool IsColliding()
     {
