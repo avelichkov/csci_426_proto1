@@ -52,10 +52,10 @@ public class PlayerMovement : MonoBehaviour
     private void Shoot()
     {
         //get angle
-        if (audioManager.pitch < 2.5f)
+        if (audioManager.pitch <= 2f)
         {
             audioManager.Play("note");
-            audioManager.pitch += 0.05f;
+            audioManager.pitch += .1f;
         }
         else
         {
@@ -66,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
         targetrb2d.velocity = new Vector2(0f,0f);
         target.Shot();
         targetrb2d.AddForce(ScaledVector(playerToTarget).normalized * forceAmount,ForceMode2D.Impulse);
-        Debug.Log("Angle: " + angle);
     }
 
     //makes upwards twice as strong as left right
