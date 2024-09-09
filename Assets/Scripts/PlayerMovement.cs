@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public float reloadTime;
     public float forceAmount;
     public Transform tip;
+
+    public GameObject hitbox;
     public Target target;
 
-    public Rigidbody2D targetrb2d;
+    private Rigidbody2D targetrb2d;
     private float timer;
     private Rigidbody2D rb2d;
 
@@ -35,11 +38,15 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(horizontalInput * new Vector2(1,0) * speed * Time.deltaTime);
 
         // Check for shot
-        if (Input.GetKeyDown(KeyCode.Space))// && timer <= 0)
+        if (Input.GetKeyDown(KeyCode.Space) && IsColliding())// && timer <= 0)
         {
             Debug.Log("shoot");
             Shoot();
             timer = reloadTime;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadCurrentScene();
         }
         timer -= Time.deltaTime;
     }
@@ -51,7 +58,31 @@ public class PlayerMovement : MonoBehaviour
         float angle = Vector3.Angle(this.transform.position, playerToTarget) - 90;
         targetrb2d.velocity = new Vector2(0f,0f);
         target.Shot();
-        targetrb2d.AddForce(playerToTarget.normalized * forceAmount,ForceMode2D.Impulse);
+        targetrb2d.AddForce(ScaledVector(playerToTarget).normalized * forceAmount,ForceMode2D.Impulse);
         Debug.Log("Angle: " + angle);
+    }
+
+    //makes upwards twice as strong as left right
+    private Vector2 ScaledVector(Vector2 old)
+    {
+        return new Vector2(old.x,old.y * 4);
+
+    }
+
+    private bool IsColliding()
+    {
+        Collider2D colA = target.GetComponent<Collider2D>();
+        Collider2D colB = hitbox.GetComponent<Collider2D>();
+        Debug.Log(colA.IsTouching(colB));
+        return colA.IsTouching(colB);
+    }
+
+    public void ReloadCurrentScene()
+    {
+        // Get the current scene
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Reload the current scene by its name or build index
+        SceneManager.LoadScene(currentScene.name);
     }
 }
