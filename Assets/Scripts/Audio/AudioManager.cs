@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+    public float pitch = 0.75f;
     public Sound[] sounds;
     public static AudioManager instance;
 
@@ -35,15 +35,19 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         //Play("quack")
-        //or FindObjectOfType<AudioManager>.Play("Soundname");
+        //or FindObjectOfType<AudioManager>().Play("Soundname");
     }
 
 
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s !=null)
+        if (s != null)
         {
+            if (s.name == "note")
+            {
+                s.source.pitch = pitch;
+            }
             s.source.Play();
         } 
         else

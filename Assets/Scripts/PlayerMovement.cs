@@ -17,12 +17,15 @@ public class PlayerMovement : MonoBehaviour
     private float timer;
     private Rigidbody2D rb2d;
 
+    private AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = reloadTime;
         targetrb2d = target.GetComponent<Rigidbody2D>();
         rb2d = GetComponent<Rigidbody2D>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -49,6 +52,15 @@ public class PlayerMovement : MonoBehaviour
     private void Shoot()
     {
         //get angle
+        if (audioManager.pitch < 2.5f)
+        {
+            audioManager.Play("note");
+            audioManager.pitch += 0.05f;
+        }
+        else
+        {
+            audioManager.Play("one up");
+        }
         Vector2 playerToTarget = target.transform.position - tip.position;
         float angle = Vector3.Angle(this.transform.position, playerToTarget) - 90;
         targetrb2d.velocity = new Vector2(0f,0f);

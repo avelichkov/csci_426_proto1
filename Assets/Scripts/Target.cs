@@ -52,7 +52,7 @@ public class Target : MonoBehaviour
     {
         // Get the current scene
         Scene currentScene = SceneManager.GetActiveScene();
-
+        FindObjectOfType<AudioManager>().pitch = 0.75f;
         // Reload the current scene by its name or build index
         SceneManager.LoadScene(currentScene.name);
     }
