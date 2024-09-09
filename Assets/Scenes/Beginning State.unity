@@ -5904,12 +5904,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: note
     clip: {fileID: 8300000, guid: c6c46f25bac752a43a936c9366e9a253, type: 3}
-    volume: 0.718
+    volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: one up
     clip: {fileID: 8300000, guid: ffc70e1b3b0a87949b515a73384c7686, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: explosion
+    clip: {fileID: 8300000, guid: 3d587e86e8cd3f545ba546c0dbb0b902, type: 3}
     volume: 1
     pitch: 1
     loop: 0

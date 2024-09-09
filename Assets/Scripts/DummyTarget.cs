@@ -8,5 +8,6 @@ public class DummyTarget : MonoBehaviour
     public void Initialize(Vector2 pos)
     {
         transform.position = pos;
+        FindAnyObjectByType<AudioManager>().Play("explosion");
     }
 }

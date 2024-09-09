@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float pitch = 0.75f;
+    public float pitch;
     public Sound[] sounds;
     public static AudioManager instance;
 

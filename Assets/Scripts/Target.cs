@@ -44,7 +44,7 @@ public class Target : MonoBehaviour
         cam.ShakeScreen();
         dummyTarget.Initialize(transform.position);
         GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         RestartGame();
     }
 
@@ -60,7 +60,7 @@ public class Target : MonoBehaviour
     {
         // Get the current scene
         Scene currentScene = SceneManager.GetActiveScene();
-        FindObjectOfType<AudioManager>().pitch = 1f;
+        FindObjectOfType<AudioManager>().pitch = 0.75f;
         // Reload the current scene by its name or build index
         SceneManager.LoadScene(currentScene.name);
     }
