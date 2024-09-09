@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         timer = reloadTime;
         targetrb2d = target.GetComponent<Rigidbody2D>();
-        rb2d = GetComponent<Rigidbody2D> ();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -43,10 +42,6 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("shoot");
             Shoot();
             timer = reloadTime;
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReloadCurrentScene();
         }
         timer -= Time.deltaTime;
     }
@@ -75,14 +70,5 @@ public class PlayerMovement : MonoBehaviour
         Collider2D colB = hitbox.GetComponent<Collider2D>();
         Debug.Log(colA.IsTouching(colB));
         return colA.IsTouching(colB);
-    }
-
-    public void ReloadCurrentScene()
-    {
-        // Get the current scene
-        Scene currentScene = SceneManager.GetActiveScene();
-
-        // Reload the current scene by its name or build index
-        SceneManager.LoadScene(currentScene.name);
     }
 }

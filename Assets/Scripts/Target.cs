@@ -45,8 +45,7 @@ public class Target : MonoBehaviour
         Collider2D colA = GetComponent<Collider2D>();
         Collider2D colB = player.GetComponent<PolygonCollider2D>();
         Collider2D colC = ground.GetComponent<Collider2D>();
-        Debug.Log(colA.IsTouching(colB));
-        return colA.IsTouching(colB);
+        return colA.IsTouching(colB) || colA.IsTouching(colC);
     }
 
     public void RestartGame()
