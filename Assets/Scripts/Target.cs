@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Target : MonoBehaviour
 {
+    public Shake cam;
     public PlayerMovement player;
     public GameObject ground;
     public ParticleSystem collisionParticles;
@@ -31,15 +32,18 @@ public class Target : MonoBehaviour
         var dur = collisionParticles.main.duration;
 
         emission.enabled = true;
-        collisionParticles.Play();     
+        collisionParticles.Play();             
     }
 
     public IEnumerator Explode()
     {
         //Do particle effects
-        yield return new WaitForSeconds(0f);
+        Shot();
+        cam.ShakeScreen();
+        yield return new WaitForSeconds(2f);
         RestartGame();
     }
+
     private bool IsColliding()
     {
         Collider2D colA = GetComponent<Collider2D>();

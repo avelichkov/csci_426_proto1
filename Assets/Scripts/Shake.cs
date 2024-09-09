@@ -15,7 +15,12 @@ public class Shake : MonoBehaviour
         }
     }
 
-    IEnumerator Shaking() {
+    public void ShakeScreen()
+    {
+        StartCoroutine(Shaking());
+    }
+
+    public IEnumerator Shaking() {
         Vector3 startPosition = transform.position;
         float elapsedTime = 0f;
 
@@ -24,7 +29,7 @@ public class Shake : MonoBehaviour
             transform.position = startPosition + (Random.insideUnitSphere * 0.2f);
             yield return null;
         }
-
+        start = false;
         transform.position = startPosition;
     }
 }

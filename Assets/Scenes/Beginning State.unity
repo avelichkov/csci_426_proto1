@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3948acc47cfd74689c87640bfd35d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1028158713}
   player: {fileID: 1555384901}
   ground: {fileID: 1425498066}
   collisionParticles: {fileID: 84301661}
@@ -5290,6 +5291,7 @@ GameObject:
   - component: {fileID: 1028158710}
   - component: {fileID: 1028158709}
   - component: {fileID: 1028158712}
+  - component: {fileID: 1028158713}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5415,6 +5417,20 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1028158713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028158708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb93f3b2a4474fb59a3d78e890989a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  duration: 1
 --- !u!1 &1425498066
 GameObject:
   m_ObjectHideFlags: 0
