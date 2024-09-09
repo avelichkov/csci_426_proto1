@@ -12,6 +12,8 @@ public class Target : MonoBehaviour
     public GameObject ground;
     public ParticleSystem collisionParticles;
     public Rigidbody2D rg2d;
+
+    public DummyTarget dummyTarget;
     public bool once = true;
     
     // Start is called before the first frame update
@@ -40,6 +42,8 @@ public class Target : MonoBehaviour
         //Do particle effects
         Shot();
         cam.ShakeScreen();
+        dummyTarget.Initialize(transform.position);
+        GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(2f);
         RestartGame();
     }
