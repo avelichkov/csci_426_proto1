@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class Target : MonoBehaviour
 {
+    public PlayerMovement player;
     public ParticleSystem collisionParticles;
     public Rigidbody2D rg2d;
     public bool once = true;
@@ -30,5 +32,11 @@ public class Target : MonoBehaviour
             once = false;      
         }
     }
-
+    private bool IsColliding()
+    {
+        Collider2D colA = GetComponent<Collider2D>();
+        Collider2D colB = player.GetComponent<Collider2D>();
+        Debug.Log(colA.IsTouching(colB));
+        return colA.IsTouching(colB);
+    }
 }
