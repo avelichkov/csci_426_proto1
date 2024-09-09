@@ -15,13 +15,15 @@ public class Target : MonoBehaviour
 
     public DummyTarget dummyTarget;
     public bool once = true;
+    private bool hasCollided = false;
     
     // Start is called before the first frame update
     public void Update()
     {
-        if (IsColliding())
+        if (IsColliding() && !hasCollided)
         {
             StartCoroutine(Explode());
+            hasCollided = true;
         }
         
     }
